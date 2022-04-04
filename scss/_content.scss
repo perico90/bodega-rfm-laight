@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+
+$ff-primary: 'Spartan', sans-serif;
+
+body {
+    font-family: $ff-primary;
+    color: $colourBlack;
+    background-color: $colourBlueLight;
+    background-image: url(../assets/img/fondo_rfm.jpg);
+    background-size: 100% 100%;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    .main-spacer {
+        width: 100%;
+        margin: auto;
+        padding: 1rem 0;
+        background: $colourWhite;
+        border: 7px inset $colourGold;
+    }
+    h3 {
+        text-align: center;
+        color: $colourBlueLight;
+        padding-bottom: .5rem;
+    }
+    h2 {
+        @extend h3;
+        color: $colourBlue;
+        padding-bottom: .75rem;
+        background: url(../assets/img/linea_doble.png) center bottom repeat-x;
+    }
+    h1 {
+        @extend h3;
+        color: $colourBlueDark;
+        animation-name: pulse;
+        animation-iteration-count: once;
+        animation-timing-function: ease-in-out;
+        animation-duration: 750ms;
+    }
+    .container-main_img {
+        text-align: center;
+        padding: 1rem 0;
+        img {
+            width: 90%;
+            border-radius: 5px;
+        }
+    }
+}
+
+@mixin grid-1-column {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    gap: 2rem;
+    padding: 0 1.5rem;
+}
+
+@mixin grid-2-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 15px;
+    padding: 0 3rem;
+}
+
+// HOME
+.home-heading {
+    grid-area: heading;
+}
+
+.home-content_1 {
+    grid-area: content_1;
+}
+
+.home-content_2 {
+    grid-area: content_2;
+}
+
+.home-content_3 {
+    grid-area: content_3;
+}
+
+
+// SERVICIOS
+.servicios-img-container {
+    text-align: center;
+}
+
+.servicios_img {
+    height: auto;
+    width: 100%;
+}
+
+.img-text_container {
+    max-width: 100vw;
+}
+
+.servicios-img-container_1 {
+    grid-area: img1;
+}
+
+.servicios-text-container_1 {
+    grid-area: text1;
+}
+
+.servicios-img-container_2 {
+    grid-area: img2;
+}
+
+.servicios-text-container_2 {
+    grid-area: text2;
+}
+
+.servicios-img-container_3 {
+    grid-area: img3;
+}
+
+.servicios-text-container_3 {
+    grid-area: text3;
+}
+
+.servicios-img-container_4 {
+    grid-area: img4;
+}
+
+.servicios-text-container_4 {
+    grid-area: text4;
+}
+
+.servicios-img-container_5 {
+    grid-area: img5;
+}
+
+.servicios-text-container_5 {
+    grid-area: text5;
+}
+
+.servicios-img-container_6 {
+    grid-area: img6;
+}
+
+.servicios-text-container_6 {
+    grid-area: text6;
+}
+
+.servicios-img-container_7 {
+    grid-area: img7;
+}
+
+.servicios-text-container_7 {
+    grid-area: text7;
+}
+
+
+
+// Mobile HOME
+@media only screen and (max-width: 479px) {
+    .container-home_img {
+        display: none;
+    }
+
+    .container-home_text {
+        @include grid-1-column;
+        grid-template-areas: 
+        'heading'
+        'content_1'
+        'content_2'
+        'content_3';
+    }
+}
+
+// Desktop HOME
+@media only screen and (min-width: 480px) {
+    main {
+        padding: 1rem;
+        .main-spacer {
+            width: 90%;
+            margin: auto;
+            padding: 1rem 0;
+            background: $colourWhite;
+            border: 7px inset $colourGold;
+        }
+    }
+    .container-home_text {
+        @include grid-2-column;
+        grid-template-areas: 
+        'heading heading'
+        'content_1 content_2'
+        'content_3 content_3';
+    }
+}
+
+
+// Mobile SERVICIOS
+@media only screen and (max-width: 479px) {
+    .img-text_container {
+        @include grid-1-column;
+        grid-template-areas: 
+        'img1'
+        'text1'
+        'img2'
+        'text2'
+        'img3'
+        'text3'
+        'img4'
+        'text4'
+        'img5'
+        'text5'
+        'img6'
+        'text6'
+        'img7'
+        'text7';
+    }
+}
+
+
+// Desktop SERVICIOS
+@media only screen and (min-width: 480px) {
+    .img-text_container {
+        @include grid-2-column;
+        grid-template-areas: 
+        'img1 text1'
+        'text2 img2'
+        'img3 text3'
+        'text4 img4'
+        'img5 text5'
+        'text6 img6'
+        'img7 text7';
+    }
+
+    .servicios-text-container {
+        display: grid;
+        align-items: center;
+    }
+    
+    .servicios-text-container h3 {
+        text-align: left;
+    }
+}
+
+
+
+// Animation
+@keyframes pulse {
+    0% {transform: scale(1);}
+    25% {transform: scale(1.4);}
+    50% {transform: scale(1);}
+    75% {transform: scale(1.2);}
+    100% {transform: scale(1);} 
+}

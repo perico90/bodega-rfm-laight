@@ -1,0 +1,138 @@
+.navbar-el {
+    border-bottom: 3px solid $colourBorder;
+    background-image: linear-gradient(to top, $colourBlueDark 25%, $colourBlueLight);
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        padding: .5rem 1rem 0 1rem;
+        margin: 0;
+    }
+        li {
+            list-style: none;
+            text-align: center;
+        }
+        .nav-menu_logo {
+            display: block;
+            &:hover {
+                filter: grayscale(100%) opacity(0.8);
+            }
+        }
+        a {
+            text-decoration: none;
+            color: $colourWhite;
+            font-size: 1.2rem;
+        }
+            svg {
+                margin: 0 15px;
+                fill: $colourWhite;
+            }
+            &:hover {
+                color: $colourGold;
+                transition: 360ms ease-in;
+            }
+    .side-menu {
+        display: none;
+    } 
+}
+
+
+// Mobile
+@media only screen and (max-width: 990px) {
+    .navbar-el {
+        max-height: 100%;
+        .nav-menu_item {
+            display: none;
+        }
+        .hamb {
+            cursor: pointer;
+            float: right;
+            padding: 40px 20px;
+        }
+        .hamb-line {
+            background: $colourWhite;
+            display: block;
+            height: 2px;
+            position: relative;
+            width: 24px;
+        }
+        .hamb-line::before, .hamb-line::after {
+            background: $colourWhite;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+        .hamb-line::before {
+            top: 5px;
+        }
+        .hamb-line::after {
+            top: -5px;
+        }
+        .side-menu:checked ~ .nav-menu {
+            max-height: 100%;
+            margin-bottom: 60px;
+        }
+        
+        .side-menu:checked ~ .nav-menu li {
+            display: block;
+            transition: height 800ms ease-in-out;
+        }
+        
+        .side-menu:checked ~ .hamb .hamb-line {
+            background: transparent;
+        }
+        .side-menu:checked ~ .hamb .hamb-line::before {
+            transform: rotate(-45deg);
+            top:0;
+        }
+        .side-menu:checked ~ .hamb .hamb-line::after {
+            transform: rotate(45deg);
+            top:0;
+        }
+    }   
+}
+
+
+// Desktop
+@media only screen and (min-width: 991px) {
+    .hamb {
+        display: none;
+    }
+    
+    .nav-menu {
+        flex-direction: row !important;
+        justify-content: center;
+        .nav-menu_item {
+            display: block;
+            &:hover {
+                svg {
+                    fill: $colourGold;
+                    transition: 360ms ease-in;
+                }
+            }
+        }
+        .nav-menu_item a:hover {
+            color: $colourGold ;
+            transition: all ease-in-out 350ms;
+        }
+        .nav-menu_item a span::after {
+            content: "";
+            position: sticky;
+            display: block;
+            height: 0.2em;
+            border-radius: .125em;
+            width: 0%;
+            background-color: $colourBorder;
+            bottom: -1em;
+            transition: all ease-in-out 300ms;
+        }
+        
+        .nav-menu_item a span:hover::after {
+            width: 100%;
+        }
+    }
+}

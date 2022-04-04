@@ -1,0 +1,71 @@
+footer {
+    bottom: 0;
+    background: $colourBlack;
+    background-image: url(../assets/img/footer_fondo.jpg) !important;
+    background-size: 100% 100%;
+    height: auto;
+    width: 100%;
+    padding: 15px 0px;
+    border-top: 3px solid $colourBorder;
+    .footer-info {
+        display: none;
+    }
+    p {
+        max-width: 550px;
+        margin: 10px auto;
+        font-size: 15px;
+        color: $colourWhite;
+        text-align: center;
+    }
+    .org-email {
+        color: $colourGold;
+        text-decoration: none;
+        &:hover {
+            color: $colourBlueLight;
+            text-decoration: underline;
+        }
+    }
+    .footer-social_media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        a {
+            margin: 0 15px;
+            svg {
+                width: 2rem;
+                fill: $colourWhite;
+                &:hover {
+                    animation-name: spin;
+                    animation-iteration-count: once;
+                    animation-timing-function: ease-in-out;
+                    animation-duration: 300ms;
+                    transform: scale(1.5);
+                    path {
+                        fill: $colourGold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Desktop
+@media only screen and (min-width: 769px) {
+    .footer-info {
+        display: block !important;
+    }
+    .footer-social_media-phone {
+        display: none;
+    }
+}
+
+@keyframes spin {
+    0% {transform: rotate();}
+    20% {transform: rotate(144deg);}
+    40% {transform: rotate(288deg);}
+    60% {transform: rotate(432deg);}
+    80% {transform: rotate(576deg);}
+    100% {transform: rotate(720deg);} 
+}
